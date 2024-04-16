@@ -1,7 +1,7 @@
 import { List, Datagrid, TextField, FunctionField } from "react-admin";
 import { formatDate } from "../../Utils/format";
 
-const ContaractsList = () => {
+const ContractsList = () => {
 	return (
 		<List>
 			<Datagrid rowClick='edit'>
@@ -18,4 +18,4 @@ const ContaractsList = () => {
 	);
 };
 
-export default ContaractsList;
+export default ContractsList;
