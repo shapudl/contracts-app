@@ -13,9 +13,15 @@ Currently, two official plugins are available:
 - npm version: 9.8.0
 - npx version: 9.8.0
 
-To run development server:
+To run development server you first need to install it by running
+
+$ npm install --legacy-peer-deps
+
+Start development server:
 
 $ npm run dev
+
+note: This runs both client and server scripts concurrently.
 
 ### Prettier
 
@@ -26,9 +32,9 @@ $ npm install --save-dev --save-exact prettier
 
 ### JSON server
 
-To run mock server, open a new terminal ( don't close the terminal where your react app is running ) and run
+To run only the mock server, without the client, open a new terminal and run
 
-$ npm run dev-server
+$ npm run server
 
 This starts [json-server](https://www.npmjs.com/package/json-server) and serves a static file db.json where our mock data resides. 
-Be mindful of the port it runs on. If something else is using the port 8000, change the port in package.json under "scripts" -> "dev-server"
+Be mindful of the port it runs on. If something else is using the port 8000, change the port in package.json under "scripts" -> "server"

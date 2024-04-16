@@ -1,35 +1,23 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import jsonServerProvider from "ra-data-json-server";
+import { Admin, Resource, fetchUtils } from "react-admin";
+import { ContractsList } from "./Components/Contracts";
 import "./App.css";
 
-function App() {
-	const [count, setCount] = useState(0);
+const httpClient = (url, options = {}) => {
+	if (!options.headers) {
+		options.headers = new Headers({ Accept: "application/json" });
+	}
 
-	return (
-		<>
-			<div>
-				<a href='https://vitejs.dev' target='_blank'>
-					<img src={viteLogo} className='logo' alt='Vite logo' />
-				</a>
-				<a href='https://react.dev' target='_blank'>
-					<img src={reactLogo} className='logo react' alt='React logo' />
-				</a>
-			</div>
-			<h1>Vite + React</h1>
-			<div className='card'>
-				<button onClick={() => setCount(count => count + 1)}>
-					count is {count}
-				</button>
-				<p>
-					Edit <code>src/App.jsx</code> and save to test HMR
-				</p>
-			</div>
-			<p className='read-the-docs'>
-				Click on the Vite and React logos to learn more
-			</p>
-		</>
-	);
-}
+	options.headers.set("X-Total-Count", 100); // @TODO set header to actual resource count
+	return fetchUtils.fetchJson(url, options);
+};
+
+const dataProvider = jsonServerProvider("http://localhost:8000");
+
+const App = () => (
+	<Admin dataProvider={dataProvider}>
+		<Resource name='contracts' list={ContractsList} />
+	</Admin>
+);
 
 export default App;
