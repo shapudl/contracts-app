@@ -1,6 +1,6 @@
 import jsonServerProvider from "ra-data-json-server";
-import { Admin, Resource, fetchUtils } from "react-admin";
-import { ContractsList } from "./Components/Contracts";
+import { Admin, Resource, ShowGuesser, fetchUtils } from "react-admin";
+import { ContractsList, Contract } from "./Components/Contracts";
 import "./App.css";
 
 const httpClient = (url, options = {}) => {
@@ -16,7 +16,7 @@ const dataProvider = jsonServerProvider("http://localhost:8000");
 
 const App = () => (
 	<Admin dataProvider={dataProvider}>
-		<Resource name='contracts' list={ContractsList} />
+		<Resource name='contracts' list={ContractsList} show={Contract}/>
 	</Admin>
 );
 

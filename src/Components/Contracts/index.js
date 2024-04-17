@@ -1,4 +1,4 @@
-import Contaracts from "./Contracts";
+import Contract from "./Contract";
 import ContractsList from "./ContractsList";
 
-export { Contaracts, ContractsList };
+export { Contract, ContractsList };
