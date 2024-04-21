@@ -7,7 +7,7 @@ const ContractCreate = () => (
 			<TextInput source='broj_ugovora' required />
 			<DateInput source='datum_akontacije' required />
 			<DateInput source='rok_isporuke' required />
-			<TextInput source='status' value={"KREIRANO"} hidden />
+			<TextInput source='status' defaultValue={"KREIRANO"} disabled />
 		</SimpleForm>
 	</Create>
 );
