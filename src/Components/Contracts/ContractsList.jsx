@@ -7,7 +7,7 @@ import {
 } from "react-admin";
 import { formatDate } from "../../Utils/format";
 import { makeStyles } from "@material-ui/core/styles";
-import StatusFilter from "./StatusFilter";
+import { StatusFilter } from "../Status";
 
 const useStyles = makeStyles(theme => ({
 	deliveredStyle: {
