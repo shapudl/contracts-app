@@ -3,9 +3,11 @@ import {
 	Datagrid,
 	TextField,
 	FunctionField,
+	SearchInput
 } from "react-admin";
 import { formatDate } from "../../Utils/format";
 import { makeStyles } from "@material-ui/core/styles";
+import StatusFilter from "./StatusFilter";
 
 const useStyles = makeStyles(theme => ({
 	deliveredStyle: {
@@ -21,6 +23,8 @@ const useStyles = makeStyles(theme => ({
 		fontWeight: "bold"
 	}
 }));
+
+const contractFilters = [<SearchInput source='q' alwaysOn />, <StatusFilter />];
 
 const ContractsList = () => {
 	const classes = useStyles();
@@ -46,7 +50,7 @@ const ContractsList = () => {
 	};
 
 	return (
-		<List>
+		<List filters={contractFilters} exporter={false}>
 			<Datagrid rowClick='show'>
 				<TextField label='ID' source='id' />
 				<TextField label='Ime Kupca' source='kupac' />
