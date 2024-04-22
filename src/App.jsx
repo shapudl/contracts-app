@@ -8,6 +8,7 @@ import {
 } from "./Components/Contracts";
 import "./App.css";
 
+// @TODO move httpClient to a more convenient place, maybe Utils/http
 const httpClient = (url, options = {}) => {
 	if (!options.headers) {
 		options.headers = new Headers({ Accept: "application/json" });
@@ -17,6 +18,7 @@ const httpClient = (url, options = {}) => {
 	return fetchUtils.fetchJson(url, options);
 };
 
+// @TODO create environmental variable for api url
 const dataProvider = jsonServerProvider("http://localhost:8000");
 
 const App = () => (
