@@ -1,3 +1,4 @@
 import StatusFilter from "./StatusFilter";
+import StatusField from "./StatusField";
 
-export { StatusFilter };
+export { StatusField, StatusFilter };
