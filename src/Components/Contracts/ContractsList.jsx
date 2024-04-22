@@ -6,49 +6,11 @@ import {
 	SearchInput
 } from "react-admin";
 import { formatDate } from "../../Utils/format";
-import { makeStyles } from "@material-ui/core/styles";
-import StatusFilter from "./StatusFilter";
-
-const useStyles = makeStyles(theme => ({
-	deliveredStyle: {
-		color: "#adadad",
-		fontWeight: "bold"
-	},
-	orderedStyle: {
-		color: "#e5b700",
-		fontWeight: "bold"
-	},
-	createdStyle: {
-		color: "#61d327",
-		fontWeight: "bold"
-	}
-}));
+import { StatusFilter, StatusField } from "../Status";
 
 const contractFilters = [<SearchInput source='q' alwaysOn />, <StatusFilter />];
 
 const ContractsList = () => {
-	const classes = useStyles();
-
-	const renderField = (record, source) => {
-		if (!record) return null;
-
-		let statusClass;
-
-		switch (record[source]) {
-			case "KREIRANO":
-				statusClass = classes.createdStyle;
-				break;
-			case "NARUČENO":
-				statusClass = classes.orderedStyle;
-				break;
-			case "ISPORUČENO":
-				statusClass = classes.deliveredStyle;
-				break;
-		}
-
-		return <span className={statusClass}>{record[source]}</span>;
-	};
-
 	return (
 		<List filters={contractFilters} exporter={false}>
 			<Datagrid rowClick='show'>
@@ -59,11 +21,7 @@ const ContractsList = () => {
 					label='Rok Isporuke'
 					render={record => formatDate(record.rok_isporuke)}
 				/>
-				<FunctionField
-					label='Status'
-					source='status'
-					render={(record, source) => renderField(record, source)}
-				/>
+				<StatusField label='Status' />
 			</Datagrid>
 		</List>
 	);
