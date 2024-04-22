@@ -7,7 +7,7 @@
 	"scripts": {
 		"client": "vite",
 		"server": "npx json-server --watch data/db.json --port 8000",
-		"build": "vite build",
+		"build": "vite build --legacy-peer-deps",
 		"lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
 		"preview": "vite preview",
 		"dev": "concurrently \"npm run client\" \"npm run server\""
