@@ -1,6 +1,9 @@
+import { useState, useEffect } from "react";
 import { FilterList, FilterListItem } from "react-admin";
 import { makeStyles } from "@material-ui/core/styles";
 import CategoryIcon from "@mui/icons-material/LocalOffer";
+import { getActiveStatuses, getInactiveStatuses } from "../../Utils/status";
+
 
 const useStyles = makeStyles(theme => ({
 	filterList: {
@@ -16,7 +19,24 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const StatusFilter = () => {
+	const [activeStatuses, setActiveStatuses] = useState([]);
+	const [inactiveStatuses, setInactiveStatuses] = useState([]);
 	const classes = useStyles();
+
+	useEffect(() => {
+		
+		const fetchStatuses = async () => {
+			const activeStatuses = await getActiveStatuses();
+			setActiveStatuses(activeStatuses);
+
+			const inactiveStatuses = await getInactiveStatuses();
+			setInactiveStatuses(inactiveStatuses);	
+		};
+
+		fetchStatuses();
+
+		return () => {};
+	}, []);
 
 	return (
 		<FilterList
@@ -27,12 +47,12 @@ const StatusFilter = () => {
 		>
 			<FilterListItem
 				label='Aktivni'
-				value={{ status: ["KREIRANO", "NARUČENO"] }}
+				value={{ status: activeStatuses }}
 				className={classes.filterListItem}
 			/>
 			<FilterListItem
 				label='Neaktivni'
-				value={{ status: "ISPORUČENO" }}
+				value={{ status: inactiveStatuses }}
 				className={classes.filterListItem}
 			/>
 		</FilterList>
