@@ -6,6 +6,16 @@ Simple admin dashboard for displaying sales contracts, filtering them, editing a
 
 This project uses [react-admin](https://marmelab.com/react-admin/), a framework for building admin interfaces. React-admin allows you to build backend-heavy web applications, from simple CRUD apps to large enterprise-grade applications.
 
+#### What's missing 
+
+To be able to use this dashboard in production, hook it to a real API. This could mean that a custom data provider should be written. More on [topic...](https://marmelab.com/react-admin/DataProviderWriting.html) 
+
+#### Future steps
+
+Some level of authentication would be a smart step.
+
+Add test coverage using Jest and react-testing-library.
+
 # Development environment
 
 - Node version : v20.5.1
