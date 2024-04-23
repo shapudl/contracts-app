@@ -8,8 +8,11 @@ import {
 import { formatDate } from "../../Utils/format";
 import { StatusFilter, StatusField } from "../Status";
 
+// @TODO current data provider enables only full text search
+// for search to work only on specific fields (e.g. "kupac") implement a custom data provider 
 const contractFilters = [<SearchInput source='q' alwaysOn />, <StatusFilter />];
 
+// @TODO implement loading state
 const ContractsList = () => {
 	return (
 		<List filters={contractFilters} exporter={false}>

@@ -1,4 +1,4 @@
-// TODO this logic would fit better on the server side, if not to keep business logic on backend than for security reasons
+// TODO this logic would fit better on the server side, functions can be used to fetch status data from the server side in the future
 
 export const  getAvailableStatus = currStatus => {
 	let newStatuses = [];
@@ -30,6 +30,15 @@ export const getActiveStatuses = async () => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve(["KREIRANO", "NARUČENO"]);
+        }, 1000); // Timeout is here to mock waiting the API response
+    });
+};
+
+
+export const getInactiveStatuses = async () => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(["ISPORUČENO"]);
         }, 1000);
     });
 };
